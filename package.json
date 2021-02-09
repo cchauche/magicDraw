@@ -1,0 +1,39 @@
+{
+  "name": "magicgroups",
+  "version": "1.0.0",
+  "description": "Web based app to make lighting magic sheets and export defined groups to asc for lighting consoles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "dev": "nodemon --inspect server/index.js",
+    "build": "webpack --mode production",
+    "build-dev": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchauche/magicGroups.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cchauche/magicGroups/issues"
+  },
+  "homepage": "https://github.com/cchauche/magicGroups#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "konva": "^7.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-konva": "^17.0.1-3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}

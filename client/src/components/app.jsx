@@ -13,12 +13,32 @@ class App extends React.Component {
       selected: {},
       isDrawing: false,
     }
+
+    this.handleCanvasMouseMove = this.handleCanvasMouseMove.bind(this);
+    this.handleToolButtonClick = this.handleToolButtonClick.bind(this);
+  }
+
+  handleCanvasClick (event) {
+    // If tool mode !==
+  }
+
+  handleCanvasMouseMove (event) {
+  }
+
+  handleToolButtonClick (event) {
+    console.log('Tool Clicked...')
+    event.preventDefault();
+    this.setState({
+      toolMode: event.target.dataset.tool
+    })
   }
 
   render () {
     return (
       <div id="app">
-        <ToolBar />
+        <ToolBar
+          handleButtonClick={this.handleToolButtonClick}
+        />
         <DrawingArea />
         <PropertiesPanel />
       </div>)

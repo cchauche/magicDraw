@@ -1,0 +1,19 @@
+{
+  "name": "magicgroups",
+  "version": "1.0.0",
+  "description": "Web based app to make lighting magic sheets and export defined groups to asc for lighting consoles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchauche/magicGroups.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cchauche/magicGroups/issues"
+  },
+  "homepage": "https://github.com/cchauche/magicGroups#readme"
+}

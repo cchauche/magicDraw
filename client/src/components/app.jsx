@@ -16,19 +16,22 @@ class App extends React.Component {
     }
 
     this.handleCanvasMouseMove = this.handleCanvasMouseMove.bind(this);
+    this.handleCanvasClick = this.handleCanvasClick.bind(this);
     this.handleToolButtonClick = this.handleToolButtonClick.bind(this);
   }
 
   handleCanvasClick (event) {
+    console.log('Mouse Clicked')
     // If tool mode is select
-      // Deselect shape
+    // Deselect shape
     // If we are already drawing a shape
-      // Terminate drawing new shape
+    // Terminate drawing new shape
     // If we are not drawing
-      // Start a new shape
+    // Start a new shape
   }
 
   handleCanvasMouseMove (event) {
+    console.log('MOVED.....')
     // If we are not drawing
       // Do nothing
     // If we are drawing a shape
@@ -50,7 +53,11 @@ class App extends React.Component {
         <ToolBar
           handleButtonClick={this.handleToolButtonClick}
         />
-        <DrawingArea />
+        <DrawingArea
+          shapes={this.state.shapes}
+          handleClick={this.handleCanvasClick}
+          handleMouseMove={this.handleCanvasMouseMove}
+        />
         <PropertiesPanel />
       </div>)
   }

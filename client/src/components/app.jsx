@@ -1,14 +1,14 @@
 import React from 'react';
-import PropertyPanel from "./PropertyPanel";
+import PropertiesPanel from "./PropertiesPanel";
 import ToolBar from "./ToolBar";
 import DrawingArea from './DrawingArea';
 
 function App() {
   return (
-  <div id="container">
+  <div id="app">
     <ToolBar />
     <DrawingArea />
-    <PropertyPanel />
+    <PropertiesPanel />
   </div>)
 }
 

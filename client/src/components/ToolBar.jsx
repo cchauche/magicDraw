@@ -2,9 +2,12 @@ import React from 'react'
 
 const ToolBar = () => {
   return (
-    <div>
-      Tool Bar
-    </div>
+    <aside className="tool-bar">
+      <h4>Tools</h4>
+      <button>Rect</button>
+      <button>Circle</button>
+      <button>Text</button>
+    </aside>
   )
 }
 

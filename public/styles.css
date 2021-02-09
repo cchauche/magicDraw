@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  font-family: Roboto, Lato, Helvetica, Arial, sans-serif;
+  color: #030303;
+}
+
+html,
+body,
+#root,
+#app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+#app {
+  display: flex;
+}
+
+aside {
+  background-color: rgb(230, 230, 230);
+}
+
+.tool-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  width: 100px;
+}
+
+.tool-bar > button {
+  margin-top: 10px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 250px;
+}
+
+#drawing {
+  width: calc(100% - 350px);
+  position: relative;
+  background-color: #595959;
+}
+
+button {
+  padding: 1px 6px;
+  border: 2px solid rgb(118, 118, 118);
+  border-radius: 4px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: rgb(106, 106, 106);
+}

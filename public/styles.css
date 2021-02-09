@@ -48,6 +48,11 @@ aside {
   background-color: #595959;
 }
 
+.konvajs-content {
+  background-color: white;
+  margin: 50px auto;
+}
+
 button {
   padding: 1px 6px;
   border: 2px solid rgb(118, 118, 118);

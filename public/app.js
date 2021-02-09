@@ -16,7 +16,37 @@
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"This is my app\");\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://magicgroups/./client/src/components/App.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _PropertyPanel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PropertyPanel */ \"./client/src/components/PropertyPanel.jsx\");\n/* harmony import */ var _ToolBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToolBar */ \"./client/src/components/ToolBar.jsx\");\n/* harmony import */ var _DrawingArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DrawingArea */ \"./client/src/components/DrawingArea.jsx\");\n\n\n\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    id: \"container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ToolBar__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DrawingArea__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PropertyPanel__WEBPACK_IMPORTED_MODULE_1__.default, null));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://magicgroups/./client/src/components/App.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/DrawingArea.jsx":
+/*!***********************************************!*\
+  !*** ./client/src/components/DrawingArea.jsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar DrawingArea = function DrawingArea() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    id: \"drawing-area\"\n  }, \"This is the drawing area\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawingArea);\n\n//# sourceURL=webpack://magicgroups/./client/src/components/DrawingArea.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/PropertyPanel.jsx":
+/*!*************************************************!*\
+  !*** ./client/src/components/PropertyPanel.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar PropertyPanel = function PropertyPanel() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    id: \"property-panel\"\n  }, \"Property Panel\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PropertyPanel);\n\n//# sourceURL=webpack://magicgroups/./client/src/components/PropertyPanel.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/ToolBar.jsx":
+/*!*******************************************!*\
+  !*** ./client/src/components/ToolBar.jsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar ToolBar = function ToolBar() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Tool Bar\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ToolBar);\n\n//# sourceURL=webpack://magicgroups/./client/src/components/ToolBar.jsx?");
 
 /***/ }),
 

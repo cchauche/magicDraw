@@ -3,6 +3,7 @@ import PropertiesPanel from "./PropertiesPanel";
 import ToolBar from "./ToolBar";
 import DrawingArea from './DrawingArea';
 import { TOOL_TYPES } from "./shapes/constants";
+import produce from "immer";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,10 +20,20 @@ class App extends React.Component {
   }
 
   handleCanvasClick (event) {
-    // If tool mode !==
+    // If tool mode is select
+      // Deselect shape
+    // If we are already drawing a shape
+      // Terminate drawing new shape
+    // If we are not drawing
+      // Start a new shape
   }
 
   handleCanvasMouseMove (event) {
+    // If we are not drawing
+      // Do nothing
+    // If we are drawing a shape
+      // get current mouse positions
+      // Update the shapes width/height based on mouse position
   }
 
   handleToolButtonClick (event) {

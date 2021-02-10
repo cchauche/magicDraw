@@ -6,8 +6,8 @@ import { nanoid } from "nanoid";
 
 
 const DrawingArea = () => {
-  const [ toolMode, setToolMode ] = useContext(ShapesContext).toolMode;
-  const [ isDrawing, setIsDrawing ] = useContext(ShapesContext).isDrawing;
+  const [ toolMode ] = useContext(ShapesContext).toolMode;
+  const [ drawing, setDrawing ] = useContext(ShapesContext).drawing;
   // const [ selected , setSelected ] = useContext(ShapesContext).selected;
   const [ shapes, setShapes ] = useContext(ShapesContext).shapes;
 
@@ -19,10 +19,10 @@ const DrawingArea = () => {
       return;
     }
     // If we are already drawing a shape
-    if (isDrawing) {
+    if (drawing) {
       // Terminate drawing new shape
-      setIsDrawing(!isDrawing);
-    } else if (!isDrawing) { // If we are not drawing
+      setDrawing(null);
+    } else if (drawing === null) { // If we are not drawing
       // Start a new shape
       let id = nanoid();
       let newShape = {
@@ -39,16 +39,25 @@ const DrawingArea = () => {
       setShapes( (draft) => {
         draft[id] = newShape
       })
+      setDrawing(id);
     }
   }
 
   const handleMouseMove = (e) => {
     console.log('MOVED.....')
-    // If we are not drawing
-      // Do nothing
-    // If we are drawing a shape
-      // get current mouse positions
-      // Update the shapes width/height based on mouse position
+    // If we are not drawing - do nothing
+    if (!drawing) return;
+    // Otherwise
+    const mouseX = e.evt.layerX;
+    const mouseY = e.evt.layerY;
+    const newWidth = mouseX - shapes[drawing].x;
+    const newHeight = mouseY - shapes[drawing].y;
+
+    // Update the shapes width/height based on mouse position
+    setShapes((draft) => {
+      draft[drawing].width = newWidth;
+      draft[drawing].height = newHeight;
+    })
   }
 
   return (

@@ -1,22 +1,15 @@
-import React, { useContext } from 'react';
-import { ShapesContext } from "./ShapesContext";
+import React from 'react';
 import Shape from './shapes/Shape';
 import { Layer, Stage } from "react-konva";
 import { TOOL_TYPES } from "./shapes/constants";
 import createShape from "./helpers/createHelpers.js";
-
 import {useStore, setStore, resetDrawing } from './helpers/state';
 
 
 const DrawingArea = () => {
-  // const [ toolMode ] = useContext(ShapesContext).toolMode;
-  // const [ drawing, setDrawing ] = useContext(ShapesContext).drawing;
-  // const [ selected , setSelected ] = useContext(ShapesContext).selected;
-  // const [ shapes, setShapes ] = useContext(ShapesContext).shapes;
   const shapes = useStore((state) => state.shapes);
   const toolMode = useStore((state) => state.toolMode);
   const drawing = useStore((state) => state.drawing);
-  console.log('Shapes: ', shapes);
 
   const handleCanvasClick = (e) => {
     console.log('Mouse Clicked')

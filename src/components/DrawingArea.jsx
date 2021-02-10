@@ -3,7 +3,7 @@ import { ShapesContext } from "./ShapesContext";
 import Shape from './shapes/Shape';
 import { Layer, Stage } from "react-konva";
 import { TOOL_TYPES } from "./shapes/constants";
-import { nanoid } from "nanoid";
+import createShape from "./helpers/createHelpers.js";
 
 
 const DrawingArea = () => {
@@ -25,22 +25,15 @@ const DrawingArea = () => {
       setDrawing(null);
     } else if (drawing === null) { // If we are not drawing
       // Start a new shape
-      let id = nanoid();
-      let newShape = {
-        id,
-        type: toolMode,
-        x: e.evt.layerX,
-        y: e.evt.layerY,
-        width: 0,
-        height: 0,
-        fill: null,
-        stroke: '#000000',
-      }
-      // update state
+      let mouseX = e.evt.layerX;
+      let mouseY = e.evt.layerY;
+      let newShape = createShape(toolMode, mouseX, mouseY);
+
+      // Update State
       setShapes( (draft) => {
-        draft[id] = newShape
+        draft[newShape.id] = newShape
       })
-      setDrawing(id);
+      setDrawing(newShape.id);
     }
   }
 

@@ -4,3 +4,13 @@ export const TOOL_TYPES = {
     TEXT: 'text',
     SEL: 'select'
 }
+
+export const SHAPE_DEFAULTS = {
+    RECT: {
+        width: 0,
+        height: 0,
+        fill: null,
+        stroke: '#000000',
+        type: TOOL_TYPES.RECT
+    },
+}

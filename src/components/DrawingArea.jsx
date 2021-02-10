@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ShapesContext } from "./ShapesContext";
+import Shape from './shapes/Shape';
 import { Layer, Stage } from "react-konva";
 import { TOOL_TYPES } from "./shapes/constants";
 import { nanoid } from "nanoid";
@@ -69,6 +70,9 @@ const DrawingArea = () => {
       onContentMousemove={handleMouseMove}
       >
         <Layer>
+          {Object.entries(shapes).map(([key, shape]) => {
+            return <Shape key={key} shape={shape}/>
+          })}
         </Layer>
       </Stage>
     </main>

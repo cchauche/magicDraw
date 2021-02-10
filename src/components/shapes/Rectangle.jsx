@@ -5,12 +5,12 @@ import { Rect as KonvaRect } from "react-konva";
 const Rectangle = (props) => {
   return (
     <KonvaRect
-      x={this.props.x}
-      y={this.props.y}
-      width={this.props.width}
-      height={this.props.height}
-      fill={null}
-      stroke={'#000'}
+      x={props.x}
+      y={props.y}
+      width={props.width}
+      height={props.height}
+      fill={props.fill}
+      stroke={props.stroke}
     />
   )
 }

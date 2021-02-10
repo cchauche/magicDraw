@@ -16,6 +16,7 @@ const DrawingArea = () => {
     console.log('Mouse Clicked')
     // If tool mode is select
     if (toolMode === TOOL_TYPES.SEL) {
+      // todo: implement selecting objects
       // Deselect shape
       return;
     }

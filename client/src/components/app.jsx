@@ -1,27 +1,14 @@
-import React from 'react';
+import React from "react";
 import PropertiesPanel from "./PropertiesPanel";
 import ToolBar from "./ToolBar";
-import DrawingArea from './DrawingArea';
+import DrawingArea from "./DrawingArea";
 import { TOOL_TYPES } from "./shapes/constants";
 import produce from "immer";
-import { nanoid } from 'nanoid';
+import { nanoid } from "nanoid";
+import { ShapesProvider } from "./ShapesContext";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shapes: {},
-      toolMode: TOOL_TYPES.SEL,
-      selected: {},
-      isDrawing: false,
-    }
-
-    this.handleCanvasMouseMove = this.handleCanvasMouseMove.bind(this);
-    this.handleCanvasClick = this.handleCanvasClick.bind(this);
-    this.handleToolButtonClick = this.handleToolButtonClick.bind(this);
-  }
-
-  handleCanvasClick (e) {
+const App = (props) => {
+  /* handleCanvasClick (e) {
     console.log('Mouse Clicked')
     // If tool mode is select
     if (this.state.toolMode === TOOL_TYPES.SEL) {
@@ -62,29 +49,17 @@ class App extends React.Component {
       // get current mouse positions
       // Update the shapes width/height based on mouse position
   }
+*/
 
-  handleToolButtonClick (e) {
-    console.log('Tool Clicked...')
-    e.preventDefault();
-    this.setState({
-      toolMode: e.target.dataset.tool
-    })
-  }
-
-  render () {
-    return (
+  return (
+    <ShapesProvider>
       <div id="app">
-        <ToolBar
-          handleButtonClick={this.handleToolButtonClick}
-        />
-        <DrawingArea
-          shapes={this.state.shapes}
-          handleClick={this.handleCanvasClick}
-          handleMouseMove={this.handleCanvasMouseMove}
-        />
+        <ToolBar />
+        <DrawingArea />
         <PropertiesPanel />
-      </div>)
-  }
-}
+      </div>
+    </ShapesProvider>
+  );
+};
 
 export default App;

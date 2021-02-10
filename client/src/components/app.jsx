@@ -4,6 +4,7 @@ import ToolBar from "./ToolBar";
 import DrawingArea from './DrawingArea';
 import { TOOL_TYPES } from "./shapes/constants";
 import produce from "immer";
+import { nanoid } from 'nanoid';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,17 +21,40 @@ class App extends React.Component {
     this.handleToolButtonClick = this.handleToolButtonClick.bind(this);
   }
 
-  handleCanvasClick (event) {
+  handleCanvasClick (e) {
     console.log('Mouse Clicked')
     // If tool mode is select
-    // Deselect shape
+    if (this.state.toolMode === TOOL_TYPES.SEL) {
+      // Deselect shape
+      return;
+    }
     // If we are already drawing a shape
-    // Terminate drawing new shape
-    // If we are not drawing
-    // Start a new shape
+    if (this.state.isDrawing) {
+      // Terminate drawing new shape
+      this.setState({
+        isDrawing: !this.state.isDrawing
+      })
+    } else if (!this.state.isDrawing) { // If we are not drawing
+      // Start a new shape
+      let id = nanoid();
+      let newShape = {
+        id,
+        type: this.state.toolMode,
+        x: e.evt.layerX,
+        y: e.evt.layerY,
+        width: 0,
+        height: 0,
+        fill: null,
+        stroke: '#000000',
+      }
+      // update state
+      this.setState(produce( draft => {
+        draft.shapes[id] = newShape
+      }));
+    }
   }
 
-  handleCanvasMouseMove (event) {
+  handleCanvasMouseMove (e) {
     console.log('MOVED.....')
     // If we are not drawing
       // Do nothing
@@ -39,11 +63,11 @@ class App extends React.Component {
       // Update the shapes width/height based on mouse position
   }
 
-  handleToolButtonClick (event) {
+  handleToolButtonClick (e) {
     console.log('Tool Clicked...')
-    event.preventDefault();
+    e.preventDefault();
     this.setState({
-      toolMode: event.target.dataset.tool
+      toolMode: e.target.dataset.tool
     })
   }
 

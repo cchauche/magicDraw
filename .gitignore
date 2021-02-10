@@ -1,3 +1,6 @@
+###Project###
+public/app.js
+
 ###OSX###
 
 .DS_Store
@@ -31,6 +34,3 @@ results
 
 npm-debug.log
 node_modules
-
-##Project Specific##
-public/app.js

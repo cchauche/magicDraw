@@ -5,7 +5,7 @@ import { TOOL_TYPES } from "./shapes/constants.js";
 export const ShapesContext = createContext();
 
 export const ShapesProvider = props => {
-  const [ isDrawing, setIsDrawing ] = useState(false);
+  const [ drawing, setDrawing ] = useState(null);
   const [ toolMode, setToolMode ] = useState(TOOL_TYPES.SEL);
   const [ selected , setSelected ] = useState('');
   const [ shapes, setShapes ] = useImmer({});
@@ -14,7 +14,7 @@ export const ShapesProvider = props => {
     shapes: [ shapes, setShapes ],
     selected: [ selected , setSelected ],
     toolMode: [ toolMode, setToolMode ],
-    isDrawing: [ isDrawing, setIsDrawing ]
+    drawing: [ drawing, setDrawing ]
   };
 
   return (

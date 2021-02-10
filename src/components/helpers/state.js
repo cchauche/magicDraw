@@ -10,4 +10,19 @@ const baseState = {
   shapes: {},
 }
 
-export const useDrawing = createStore(baseState);
+export const useStore = createStore(baseState);
+
+export const setStore = (fn) => useStore.set(produce(fn));
+
+export const setToolMode = (mode) => {
+  setStore((draft) => {
+    draft.toolMode = mode;
+  });
+}
+
+export const resetDrawing = () => {
+  setStore((draft) => {
+    draft.drawing = baseState.drawing;
+  })
+}
+

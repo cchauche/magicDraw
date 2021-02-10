@@ -5,12 +5,18 @@ import { Layer, Stage } from "react-konva";
 import { TOOL_TYPES } from "./shapes/constants";
 import createShape from "./helpers/createHelpers.js";
 
+import {useStore, setStore, resetDrawing } from './helpers/state';
+
 
 const DrawingArea = () => {
-  const [ toolMode ] = useContext(ShapesContext).toolMode;
-  const [ drawing, setDrawing ] = useContext(ShapesContext).drawing;
+  // const [ toolMode ] = useContext(ShapesContext).toolMode;
+  // const [ drawing, setDrawing ] = useContext(ShapesContext).drawing;
   // const [ selected , setSelected ] = useContext(ShapesContext).selected;
-  const [ shapes, setShapes ] = useContext(ShapesContext).shapes;
+  // const [ shapes, setShapes ] = useContext(ShapesContext).shapes;
+  const shapes = useStore((state) => state.shapes);
+  const toolMode = useStore((state) => state.toolMode);
+  const drawing = useStore((state) => state.drawing);
+  console.log('Shapes: ', shapes);
 
   const handleCanvasClick = (e) => {
     console.log('Mouse Clicked')
@@ -23,7 +29,7 @@ const DrawingArea = () => {
     // If we are already drawing a shape
     if (drawing) {
       // Terminate drawing new shape
-      setDrawing(null);
+      resetDrawing();
     } else if (drawing === null) { // If we are not drawing
       // Start a new shape
       let mouseX = e.evt.layerX;
@@ -31,10 +37,10 @@ const DrawingArea = () => {
       let newShape = createShape(toolMode, mouseX, mouseY);
 
       // Update State
-      setShapes( (draft) => {
-        draft[newShape.id] = newShape
+      setStore( (draft) => {
+        draft.shapes[newShape.id] = newShape
       })
-      setDrawing(newShape.id);
+      setStore((draft) => {draft.drawing = newShape.id});
     }
   }
 
@@ -49,9 +55,9 @@ const DrawingArea = () => {
     const newHeight = mouseY - shapes[drawing].y;
 
     // Update the shapes width/height based on mouse position
-    setShapes((draft) => {
-      draft[drawing].width = newWidth;
-      draft[drawing].height = newHeight;
+    setStore((draft) => {
+      draft.shapes[drawing].width = newWidth;
+      draft.shapes[drawing].height = newHeight;
     })
   }
 

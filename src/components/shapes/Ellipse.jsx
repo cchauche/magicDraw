@@ -1,9 +1,9 @@
 import React, { useCallback, useRef, useEffect } from 'react';
-import { Rect as KonvaRect, Transformer } from "react-konva";
+import { Ellipse as KonvaElli, Transformer } from "react-konva";
 import { useStore, setSelected, moveShape, transRect } from "../helpers/state";
 
 
-const Rectangle = (props) => {
+const Ellipse = (props) => {
   const drawing = useStore((state) => state.drawing);
   const shapeRef = useRef();
   const transRef = useRef();
@@ -18,7 +18,6 @@ const Rectangle = (props) => {
   const handleSelect = useCallback(
     (event) => {
       event.evt.cancelBubble = true;
-      // event.stopPropagation();
       if (!drawing) {
         setSelected(props.id);
       }
@@ -42,7 +41,7 @@ const Rectangle = (props) => {
 
   return (
     <>
-    <KonvaRect
+    <KonvaElli
       ref={shapeRef}
       onClick={handleSelect}
       x={props.x}
@@ -69,4 +68,4 @@ const Rectangle = (props) => {
   )
 }
 
-export default Rectangle
+export default Ellipse

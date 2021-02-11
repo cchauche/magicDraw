@@ -37,3 +37,14 @@ export const resetSelected = () => {
     draft.selected = baseState.selected;
   })
 }
+
+export const moveShape = (id, event) => {
+  setStore((draft) => {
+    const shape = draft.shapes[id];
+
+    if (shape) {
+      shape.x = event.target.x();
+      shape.y = event.target.y();
+    }
+  });
+}

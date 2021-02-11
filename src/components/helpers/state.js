@@ -44,7 +44,6 @@ export const resetDrawing = () => {
 export const setSelected = (id) => {
   const state = useStore.get();
   if (state.toolMode === TOOL_TYPES.SEL) {
-    console.log('SettingSelected to: ', id);
     setStore((draft) => {
       draft.selected = id;
     })
@@ -69,7 +68,6 @@ export const moveShape = (id, event) => {
 }
 
 export const transRect = (node, id, event) => {
-  console.log('Transformed')
   const scaleX = node.scaleX();
   const scaleY = node.scaleY();
 

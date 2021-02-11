@@ -11,10 +11,8 @@ const DrawingArea = () => {
   const toolMode = useStore((state) => state.toolMode);
   const drawing = useStore((state) => state.drawing);
   const selected = useStore((state) => state.selected);
-  console.log('Current Selected: ', selected);
 
   const handleCanvasClick = (event) => {
-    console.log('Mouse Clicked')
     // If tool mode is select
     if (toolMode === TOOL_TYPES.SEL) {
       if (!event.evt.cancelBubble) resetSelected();

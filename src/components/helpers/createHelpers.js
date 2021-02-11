@@ -8,6 +8,8 @@ const createShape = (type, x, y) => {
     return createRectangle(id, x, y);
   } else if (type === TOOL_TYPES.TEXT) {
     return createTextBox(id, x, y);
+  } else if (type === TOOL_TYPES.ELLI) {
+    return createEllipse(id, x, y);
   }
 }
 
@@ -17,6 +19,9 @@ const createRectangle = (id, x, y) => {
 }
 
 //todo: Function to create an ellipse shape
+const createEllipse = (id, x, y) => {
+  return Object.assign({...SHAPE_DEFAULTS.ELLI}, {id, x, y})
+}
 
 //todo: function to create a text box
 const createTextBox = (id, x, y) => {

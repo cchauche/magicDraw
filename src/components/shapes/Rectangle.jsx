@@ -1,10 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Rect as KonvaRect } from "react-konva";
-import { useStore, setSelected, moveShape } from "../helpers/state";
+import { useStore, setSelected, moveShape, transRect } from "../helpers/state";
 
 
 const Rectangle = (props) => {
   const drawing = useStore((state) => state.drawing);
+  const shapeRef = useRef();
+  const transRef = useRef();
 
   const handleSelect = useCallback(
     (event) => {
@@ -23,8 +25,16 @@ const Rectangle = (props) => {
     [props.id],
   )
 
+  const handleTransform = useCallback(
+    (event) => {
+      transRect(shapeRef.current, id, event)
+    },
+    [props.id],
+  )
+
   return (
     <KonvaRect
+      ref={shapeRef}
       onClick={handleSelect}
       x={props.x}
       y={props.y}
@@ -35,6 +45,7 @@ const Rectangle = (props) => {
       draggable
       onDragStart={handleSelect}
       onDragEnd={handleDrag}
+      onTransformEnd={handleTransform}
     />
   )
 }

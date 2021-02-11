@@ -48,3 +48,7 @@ export const moveShape = (id, event) => {
     }
   });
 }
+
+export const transRect = (node, id, event) => {
+  console.log('Transformed')
+}

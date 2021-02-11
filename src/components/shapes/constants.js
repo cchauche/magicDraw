@@ -9,7 +9,7 @@ export const SHAPE_DEFAULTS = {
     RECT: {
         width: 0,
         height: 0,
-        fill: null,
+        fill: '',
         stroke: '#000000',
         type: TOOL_TYPES.RECT
     },

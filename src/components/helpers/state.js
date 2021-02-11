@@ -42,10 +42,13 @@ export const resetDrawing = () => {
 }
 
 export const setSelected = (id) => {
-  console.log('SettingSelected to: ', id);
-  setStore((draft) => {
-    draft.selected = id;
-  })
+  const state = useStore.get();
+  if (state.toolMode === TOOL_TYPES.SEL) {
+    console.log('SettingSelected to: ', id);
+    setStore((draft) => {
+      draft.selected = id;
+    })
+  }
 }
 
 export const resetSelected = () => {
@@ -84,6 +87,16 @@ export const transRect = (node, id, event) => {
 
       shape.width = node.width() * scaleX;
       shape.height = node.height() * scaleY;
+    }
+  })
+}
+
+export const updateAttribute = (attr, value) => {
+  setStore((draft) => {
+    const shape = draft.shapes[draft.selected];
+
+    if (shape) {
+      shape[attr] = value;
     }
   })
 }

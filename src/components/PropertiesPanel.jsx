@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useStore } from "./helpers/state";
+import { useStore, updateAttribute } from "./helpers/state";
 
 const getSelectedShape = (state) => state.shapes[state.selected];
 

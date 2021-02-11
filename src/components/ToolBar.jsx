@@ -1,6 +1,6 @@
 import React from "react";
 import { TOOL_TYPES } from "./shapes/constants";
-import { setToolMode } from "./helpers/state";
+import { setToolMode, saveShapes, clearShapes } from "./helpers/state";
 
 const ToolBar = () => {
 
@@ -20,9 +20,15 @@ const ToolBar = () => {
       <button onClick={handleButtonClick} value={TOOL_TYPES.ELLI}>
         Circle
       </button>
-      <button onClick={handleButtonClick} value={TOOL_TYPES.TEXT}>
-        Text
+      <button onClick={saveShapes} value={'Save'}>
+        Save
       </button>
+      <button onClick={clearShapes} value={'Clear'}>
+        Clear
+      </button>
+      {/* <button onClick={handleButtonClick} value={TOOL_TYPES.TEXT}>
+        Text
+      </button> */}
     </aside>
   );
 };

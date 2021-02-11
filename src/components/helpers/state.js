@@ -67,4 +67,23 @@ export const moveShape = (id, event) => {
 
 export const transRect = (node, id, event) => {
   console.log('Transformed')
+  const scaleX = node.scaleX();
+  const scaleY = node.scaleY();
+
+  node.scaleX(1);
+  node.scaleY(1);
+
+  setStore((draft) => {
+    const shape = draft.shapes[id];
+
+    if (shape) {
+      shape.x = node.x();
+      shape.y = node.y();
+
+      shape.rotation = node.rotation();
+
+      shape.width = node.width() * scaleX;
+      shape.height = node.height() * scaleY;
+    }
+  })
 }

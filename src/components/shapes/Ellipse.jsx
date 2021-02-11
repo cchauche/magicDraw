@@ -46,8 +46,8 @@ const Ellipse = (props) => {
       onClick={handleSelect}
       x={props.x}
       y={props.y}
-      width={props.width}
-      height={props.height}
+      width={props.width < 2 ? 2 : props.width}
+      height={props.height < 2 ? 2 : props.height}
       fill={props.fill}
       stroke={props.stroke}
       strokeWidth={props.strokeWidth}

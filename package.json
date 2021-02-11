@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Web based app to make lighting magic sheets and export defined groups to asc for lighting consoles.",
   "main": "index.js",
+  "engines": {
+    "node": "14.15.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",

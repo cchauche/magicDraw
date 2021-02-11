@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { ShapesContext } from "./ShapesContext";
+import React from "react";
 import { TOOL_TYPES } from "./shapes/constants";
+import { setToolMode } from "./helpers/state";
 
 const ToolBar = () => {
-  const [ toolMode, setToolMode ] = useContext(ShapesContext).toolMode;
 
   const handleButtonClick = (e) => {
     setToolMode(e.target.value)

@@ -1,40 +1,40 @@
-import React, { useContext } from 'react';
-import { ShapesContext } from "./ShapesContext";
+import React from 'react';
 import Shape from './shapes/Shape';
 import { Layer, Stage } from "react-konva";
 import { TOOL_TYPES } from "./shapes/constants";
 import createShape from "./helpers/createHelpers.js";
+import {useStore, setStore, resetDrawing, resetSelected } from './helpers/state';
 
 
 const DrawingArea = () => {
-  const [ toolMode ] = useContext(ShapesContext).toolMode;
-  const [ drawing, setDrawing ] = useContext(ShapesContext).drawing;
-  // const [ selected , setSelected ] = useContext(ShapesContext).selected;
-  const [ shapes, setShapes ] = useContext(ShapesContext).shapes;
+  const shapes = useStore((state) => state.shapes);
+  const toolMode = useStore((state) => state.toolMode);
+  const drawing = useStore((state) => state.drawing);
+  const selected = useStore((state) => state.selected);
+  console.log('Current Selected: ', selected);
 
-  const handleCanvasClick = (e) => {
+  const handleCanvasClick = (event) => {
     console.log('Mouse Clicked')
     // If tool mode is select
     if (toolMode === TOOL_TYPES.SEL) {
-      // todo: implement selecting objects
-      // Deselect shape
+      if (!event.evt.cancelBubble) resetSelected();
       return;
     }
     // If we are already drawing a shape
     if (drawing) {
       // Terminate drawing new shape
-      setDrawing(null);
+      resetDrawing();
     } else if (drawing === null) { // If we are not drawing
       // Start a new shape
-      let mouseX = e.evt.layerX;
-      let mouseY = e.evt.layerY;
+      let mouseX = event.evt.layerX;
+      let mouseY = event.evt.layerY;
       let newShape = createShape(toolMode, mouseX, mouseY);
 
       // Update State
-      setShapes( (draft) => {
-        draft[newShape.id] = newShape
+      setStore( (draft) => {
+        draft.shapes[newShape.id] = newShape
       })
-      setDrawing(newShape.id);
+      setStore((draft) => {draft.drawing = newShape.id});
     }
   }
 
@@ -49,9 +49,9 @@ const DrawingArea = () => {
     const newHeight = mouseY - shapes[drawing].y;
 
     // Update the shapes width/height based on mouse position
-    setShapes((draft) => {
-      draft[drawing].width = newWidth;
-      draft[drawing].height = newHeight;
+    setStore((draft) => {
+      draft.shapes[drawing].width = newWidth;
+      draft.shapes[drawing].height = newHeight;
     })
   }
 

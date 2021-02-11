@@ -39,7 +39,6 @@ const DrawingArea = () => {
   }
 
   const handleMouseMove = (e) => {
-    console.log('MOVED.....')
     // If we are not drawing - do nothing
     if (!drawing) return;
     // Otherwise

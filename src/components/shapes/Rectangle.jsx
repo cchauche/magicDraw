@@ -1,5 +1,5 @@
-import React, { useCallback, useRef } from 'react';
-import { Rect as KonvaRect } from "react-konva";
+import React, { useCallback, useRef, useEffect } from 'react';
+import { Rect as KonvaRect, Transformer } from "react-konva";
 import { useStore, setSelected, moveShape, transRect } from "../helpers/state";
 
 
@@ -7,10 +7,19 @@ const Rectangle = (props) => {
   const drawing = useStore((state) => state.drawing);
   const shapeRef = useRef();
   const transRef = useRef();
+  console.log('Making Rect: ', props.id);
+
+  useEffect(() => {
+    if (props.isSelected) {
+      transRef.current.nodes([shapeRef.current]);
+      transRef.current.getLayer().batchDraw();
+    }
+  }, [props.isSelected])
 
   const handleSelect = useCallback(
     (event) => {
-      event.evt.resetSelected = true;
+      event.evt.cancelBubble = true;
+      // event.stopPropagation();
       if (!drawing) {
         setSelected(props.id);
       }
@@ -27,12 +36,13 @@ const Rectangle = (props) => {
 
   const handleTransform = useCallback(
     (event) => {
-      transRect(shapeRef.current, id, event)
+      transRect(shapeRef.current, props.id, event)
     },
     [props.id],
   )
 
   return (
+    <>
     <KonvaRect
       ref={shapeRef}
       onClick={handleSelect}
@@ -47,6 +57,14 @@ const Rectangle = (props) => {
       onDragEnd={handleDrag}
       onTransformEnd={handleTransform}
     />
+    {props.isSelected && (
+      <Transformer
+        ref={transRef}
+        anchorSize={5}
+        borderDash={[6, 2]}
+      />
+    )}
+    </>
   )
 }
 

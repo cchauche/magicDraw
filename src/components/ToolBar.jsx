@@ -18,7 +18,7 @@ const ToolBar = () => {
         Rect
       </button>
       <button onClick={handleButtonClick} value={TOOL_TYPES.ELLI}>
-        Circle
+        Ellipse
       </button>
       <button onClick={saveShapes} value={'Save'}>
         Save

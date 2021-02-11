@@ -52,6 +52,7 @@ const Rectangle = (props) => {
       height={props.height}
       fill={props.fill}
       stroke={props.stroke}
+      strokeWidth={props.strokeWidth}
       rotation={props.rotation ?? 0}
       draggable={props.isSelected}
       onDragStart={handleSelect}

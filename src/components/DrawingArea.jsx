@@ -3,20 +3,21 @@ import Shape from './shapes/Shape';
 import { Layer, Stage } from "react-konva";
 import { TOOL_TYPES } from "./shapes/constants";
 import createShape from "./helpers/createHelpers.js";
-import {useStore, setStore, resetDrawing } from './helpers/state';
+import {useStore, setStore, resetDrawing, resetSelected } from './helpers/state';
 
 
 const DrawingArea = () => {
   const shapes = useStore((state) => state.shapes);
   const toolMode = useStore((state) => state.toolMode);
   const drawing = useStore((state) => state.drawing);
+  const selected = useStore((state) => state.selected);
+  console.log('Current Selected: ', selected);
 
-  const handleCanvasClick = (e) => {
+  const handleCanvasClick = (event) => {
     console.log('Mouse Clicked')
     // If tool mode is select
     if (toolMode === TOOL_TYPES.SEL) {
-      // todo: implement selecting objects
-      // Deselect shape
+      if (!event.evt.cancelBubble) resetSelected();
       return;
     }
     // If we are already drawing a shape
@@ -25,8 +26,8 @@ const DrawingArea = () => {
       resetDrawing();
     } else if (drawing === null) { // If we are not drawing
       // Start a new shape
-      let mouseX = e.evt.layerX;
-      let mouseY = e.evt.layerY;
+      let mouseX = event.evt.layerX;
+      let mouseY = event.evt.layerY;
       let newShape = createShape(toolMode, mouseX, mouseY);
 
       // Update State

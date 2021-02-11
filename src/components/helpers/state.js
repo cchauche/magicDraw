@@ -1,6 +1,5 @@
 import { createStore } from "@halka/state";
 import produce from "immer";
-import { nanoid } from "nanoid";
 import { TOOL_TYPES } from "../shapes/constants";
 
 const baseState = {
@@ -26,3 +25,15 @@ export const resetDrawing = () => {
   })
 }
 
+export const setSelected = (id) => {
+  console.log('SettingSelected to: ', id);
+  setStore((draft) => {
+    draft.selected = id;
+  })
+}
+
+export const resetSelected = () => {
+  setStore((draft) => {
+    draft.selected = baseState.selected;
+  })
+}

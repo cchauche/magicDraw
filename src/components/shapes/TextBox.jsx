@@ -3,8 +3,16 @@ import { Text } from "react-konva";
 
 
 const TextBox = (props) => {
+  const handleSelect = (event) => {
+    event.evt.resetSelected = true;
+    if (!drawing) {
+      setSelected(props.id);
+    }
+  }
+
   return (
     <Text
+      onClick={handleSelect}
       x={props.x}
       y={props.y}
       width={props.width}

@@ -16,7 +16,7 @@ export const SHAPE_DEFAULTS = {
     TEXT: {
         width: 0,
         height: 0,
-        fill: null,
+        fill: 'green',
         stroke: '#000000',
         text: 'Text Here',
         type: TOOL_TYPES.TEXT,
